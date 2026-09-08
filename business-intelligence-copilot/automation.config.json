@@ -1,0 +1,13 @@
+{
+  "dataDir": "data",
+  "browserProfileDir": "data/browser-profile",
+  "dbPath": "data/db/business-intelligence-copilot.sqlite",
+  "exportsDir": "data/exports",
+  "screenshotsDir": "data/screenshots",
+  "mapsHeadless": false,
+  "websiteHeadless": true,
+  "delayMinMs": 1200,
+  "delayMaxMs": 2800,
+  "websiteMaxPages": 5,
+  "navigationTimeoutMs": 45000
+}

@@ -1,0 +1,386 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap");
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --line: rgba(255, 255, 255, 0.09);
+  --accent: #ef233c;
+  --panel-top: rgba(22, 8, 10, 0.88);
+  --panel-bottom: rgba(6, 3, 4, 0.94);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top, rgba(120, 10, 25, 0.22), transparent 34%),
+    linear-gradient(180deg, #120406 0%, #040203 28%, #050304 100%);
+  color: #f8fafc;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(239, 35, 60, 0.92);
+  color: white;
+}
+
+.font-display {
+  font-family: Manrope, Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.panel-noir {
+  position: relative;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--panel-top), var(--panel-bottom));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 24px 60px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(20px);
+}
+
+.panel-noir::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent 28%);
+}
+
+.panel-red-glow::after {
+  content: "";
+  position: absolute;
+  inset: -30% auto auto 55%;
+  width: 280px;
+  height: 280px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(239, 35, 60, 0.16), transparent 72%);
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+.eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #f87171;
+}
+
+.display-line {
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+.muted-copy {
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.input-noir {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(8, 4, 5, 0.84);
+  color: white;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
+}
+
+.input-noir:focus {
+  outline: none;
+  border-color: rgba(239, 35, 60, 0.45);
+  box-shadow: 0 0 0 4px rgba(239, 35, 60, 0.12);
+  background: rgba(12, 4, 6, 0.96);
+}
+
+.button-accent {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(239, 35, 60, 0.38);
+  background: linear-gradient(135deg, rgba(239, 35, 60, 0.98), rgba(148, 16, 33, 0.98));
+  color: white;
+  box-shadow: 0 12px 30px rgba(239, 35, 60, 0.22);
+  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
+}
+
+.button-accent:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 36px rgba(239, 35, 60, 0.28);
+  filter: saturate(1.1);
+}
+
+.button-accent::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.18) 45%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 300ms ease;
+}
+
+.button-accent:hover::before {
+  transform: translateX(120%);
+}
+
+.button-ghost {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.84);
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.button-ghost:hover {
+  border-color: rgba(239, 35, 60, 0.22);
+  background: rgba(239, 35, 60, 0.08);
+  color: white;
+}
+
+.metric-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -36% auto;
+  width: 140px;
+  height: 140px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(239, 35, 60, 0.18), transparent 70%);
+  filter: blur(18px);
+}
+
+.gradient-blur-top {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 30;
+  height: 120px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(4, 2, 3, 0.84), transparent);
+  backdrop-filter: blur(8px);
+  mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+.bg-stars-small,
+.bg-stars-large {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.bg-stars-small {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.8) 0 1px, transparent 1.2px),
+    radial-gradient(circle at 70% 10%, rgba(255, 255, 255, 0.7) 0 1px, transparent 1.2px),
+    radial-gradient(circle at 40% 75%, rgba(255, 255, 255, 0.6) 0 1px, transparent 1.2px),
+    radial-gradient(circle at 88% 62%, rgba(255, 255, 255, 0.5) 0 1px, transparent 1.2px);
+  background-size: 340px 340px;
+}
+
+.bg-stars-large {
+  background-image:
+    radial-gradient(circle at 15% 18%, rgba(255, 255, 255, 0.6) 0 1.8px, transparent 2px),
+    radial-gradient(circle at 80% 44%, rgba(255, 255, 255, 0.45) 0 2px, transparent 2.2px),
+    radial-gradient(circle at 52% 82%, rgba(255, 255, 255, 0.38) 0 2px, transparent 2.2px);
+  background-size: 540px 540px;
+  animation: star-drift 90s linear infinite;
+}
+
+.bg-grid-mask {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, black 36%, transparent 78%);
+}
+
+.mask-fade-x {
+  mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+}
+
+.mask-fade-y {
+  mask-image: linear-gradient(180deg, transparent, black 10%, black 90%, transparent);
+}
+
+.ticker-track {
+  animation: ticker-scroll 26s linear infinite;
+}
+
+.marquee-track {
+  animation: marquee-left 28s linear infinite;
+}
+
+.marquee-track-reverse {
+  animation-name: marquee-right;
+}
+
+.luminous-shell {
+  background: radial-gradient(circle at 50% 10%, #343434 0%, #191919 68%);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.15),
+    0 24px 60px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.luminous-shell::before {
+  content: "";
+  position: absolute;
+  inset: -0.85rem;
+  border-radius: 2.6rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  clip-path: polygon(
+    4.2rem 0,
+    0 0,
+    0 4.2rem,
+    4.2rem 4.2rem,
+    4.2rem calc(100% - 4.2rem),
+    0 calc(100% - 4.2rem),
+    0 100%,
+    4.2rem 100%,
+    4.2rem calc(100% - 4.2rem),
+    calc(100% - 4.2rem) calc(100% - 4.2rem),
+    calc(100% - 4.2rem) 100%,
+    100% 100%,
+    100% calc(100% - 4.2rem),
+    calc(100% - 4.2rem) calc(100% - 4.2rem),
+    calc(100% - 4.2rem) 4.2rem,
+    100% 4.2rem,
+    100% 0,
+    calc(100% - 4.2rem) 0,
+    calc(100% - 4.2rem) 4.2rem,
+    4.2rem 4.2rem
+  );
+}
+
+.luminous-light-layer {
+  pointer-events: none;
+}
+
+.luminous-slit {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 66%;
+  height: 1rem;
+  transform: rotateX(-76deg);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.luminous-beam {
+  position: absolute;
+  inset: 0;
+  opacity: 0.62;
+}
+
+.beam-min,
+.beam-mid,
+.beam-hi {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.82));
+}
+
+.beam-min {
+  bottom: 3rem;
+  height: 3rem;
+  width: 68%;
+  transform: rotateX(-42deg);
+  opacity: 0.3;
+}
+
+.beam-mid {
+  bottom: 8rem;
+  height: 12rem;
+  width: 74%;
+  transform: rotateX(-42deg);
+  filter: blur(1rem);
+  opacity: 0.45;
+  border-radius: 100% 100% 0 0;
+}
+
+.beam-hi {
+  bottom: 10rem;
+  height: 11rem;
+  width: 52%;
+  transform: rotateX(22deg);
+  filter: blur(1rem);
+  opacity: 0.3;
+  border-radius: 100% 100% 0 0;
+}
+
+.luminous-action {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(239, 35, 60, 0.22), transparent);
+}
+
+.table-row-hover {
+  transition: background 150ms ease;
+}
+
+.table-row-hover:hover {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+@keyframes star-drift {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-120px);
+  }
+}
+
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
